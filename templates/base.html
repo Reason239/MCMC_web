@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.4.1-dist/css/bootstrap.min.css') }}" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ url_for('static', filename='bootstrap-4.4.1-dist/js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <title>MCMC decoder</title>
+</head>
+<body>
+    <div class="jumbotron">
+         <div class="container-fluid">
+             {% block container %}
+
+             {% endblock %}
+         </div>
+    </div>
+</body>
+</html>

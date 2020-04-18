@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block container %}
+    <h2>Давайте что-нибудь раскодируем!</h2>
+    <p>Шифр подстановки&nbsp;&mdash; это шифр, в&nbsp;котором каждый символ исходного алфавита заменён на&nbsp;какой-то другой символ.
+
+Расшифровать такое сообщение непросто, если оно не&nbsp;слишком длинное. Данный сайт поможет это сделать, исользуя алгоритм Метрополиса.</p>
+    <div class="row">
+        <div class="col-sm-2">
+            <p><a class="btn btn-primary btn" href="http://utstat.toronto.edu/WSFiles/technicalreports/1005.pdf" role="button">О методе &raquo;</a></p>
+        </div>
+
+        <div class="col-sm-2">
+            <p><a class="btn btn-primary btn" href="{{ url_for('about') }}" role="button">Как пользоваться &raquo;</a></p>
+        </div>
+
+        <div class="col-sm-8"></div>
+    </div>
+
+
+
+
+    <form action="/" method="POST">
+        <div class="form-group">
+            <label for="input_text">Вставьте сюда свой текст</label>
+            <textarea class="form-control" name="input_text" id="input_text" rows=10></textarea>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+            <div class="col-sm-1">Режим: </div>
+            <div class="col-sm-3">
+                <label class="radio-inline"><input type="radio" name="mode" value="decipher" checked> Расшифровать  </label>
+                <label class="radio-inline"><input type="radio" name="mode" value="cipher"> Зашифровать</label>
+            </div>
+            <div class="col-sm-1">Язык: </div>
+            <div class="col-sm-3">
+                <label class="radio-inline"><input type="radio" name="lang" value="ru" checked> Русский  </label>
+                <label class="radio-inline"><input type="radio" name="lang" value="en"> Английский</label>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group form-inline">
+                    <label for="iter">Количество итераций::</label>
+                    <input class="form-control" name="iter" id="iter">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% if result %}
+        <h3>Результат</h3>
+
+        <div class="panel panel-default bg-white w-100" style="word-wrap: break-word;">
+            <div class="panel-body"> {{ result }} </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
